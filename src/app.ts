@@ -130,3 +130,17 @@ const errorBag: ErrorContainer = {
   email: "Not a valid email!",
   username: "Must start with a capital character!",
 };
+
+// optional chaining - if the property is not found, it will return undefined,
+// instead of throwing an error
+const fecthUserData = {
+  id: "user1",
+  name: "Andrea",
+  job: { title: "CEO", description: "My own company" },
+};
+console.log(fecthUserData?.job?.title);
+
+// nullish coalescing - if the value is null or undefined, it will return the default value
+const userInput = "";
+const storedData = userInput ?? "DEFAULT";
+console.log(storedData);
