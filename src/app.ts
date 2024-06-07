@@ -25,6 +25,13 @@ type Numeric = number | boolean;
 type Universal = Combinable & Numeric;
 
 //          Type Guards
+
+// function overloads - multiple function signatures, TS will determine the correct
+// function to use, based on the arguments
+function add(a: string, b: number): number;
+function add(a: number, b: string): number;
+function add(a: number, b: number): number;
+function add(a: string, b: string): string;
 function add(a: Combinable, b: Combinable) {
   if (typeof a === "string" || typeof b === "string") {
     return a.toString() + b.toString();
@@ -113,3 +120,13 @@ const userInputElement = document.getElementById(
   "user-input"
 )! as HTMLInputElement; // ! - tells TS that the element will never be null
 userInputElement.value = "Hi there!";
+
+// index property
+interface ErrorContainer {
+  [prop: string]: string;
+}
+
+const errorBag: ErrorContainer = {
+  email: "Not a valid email!",
+  username: "Must start with a capital character!",
+};
