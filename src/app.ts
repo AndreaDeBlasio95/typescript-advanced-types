@@ -75,3 +75,34 @@ function useVehicle(vehicle: Vehicle) {
 
 useVehicle(vehicle1);
 useVehicle(vehicle2);
+
+// discriminated Union - using the custom type property to determine the type
+interface Bird {
+  type: "bird";
+  flyingSpeed: number;
+}
+
+interface Horse {
+  type: "horse";
+  runningSpeed: number;
+}
+
+type Animal = Bird | Horse;
+
+// use switch statement to determine the type - this is a type guard
+function moveAnimal(animal: Animal) {
+  let speed;
+  switch (animal.type) {
+    case "bird":
+      speed = animal.flyingSpeed;
+      break;
+    case "horse":
+      speed = animal.runningSpeed;
+      break;
+  }
+  console.log("Moving at speed: " + speed);
+}
+
+moveAnimal({ type: "bird", flyingSpeed: 10 });
+
+// type casting
