@@ -106,3 +106,10 @@ function moveAnimal(animal: Animal) {
 moveAnimal({ type: "bird", flyingSpeed: 10 });
 
 // type casting
+// first syntax
+// const userInputElement = <HTMLInputElement>document.getElementById("user-input")!;
+// second syntax
+const userInputElement = document.getElementById(
+  "user-input"
+)! as HTMLInputElement; // ! - tells TS that the element will never be null
+userInputElement.value = "Hi there!";
